@@ -16,14 +16,14 @@ spec:
     spec:
       containers:
       - name: nginx-cont
-        image: saidhavane/templatemo:static
+        image: mayurpandit25/studentapp-frontend:latest
         ports:
         - containerPort: 80
 ...
 ---
 apiVersion: v1
 kind: Service
-metadat: 
+metadata: 
   name: replica-svc
   labels:
     app: myapp
@@ -33,4 +33,4 @@ spec:
     app: myapp
   ports:
   - port: 80
-    targetPort: 80
+    targetPort: 80 
