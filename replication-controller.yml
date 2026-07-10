@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ReplicationController
+metadata: 
+  name: my-rc
+  labels:
+    app: myapp
+spec:
+  replicas: 5
+  selector: 
+    app: myapp
+  template:
+    metadata:
+      name: rc-temp
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: nginx-cont
+        image: saidhavane/templatemo:static
+        ports:
+          containerPort: 80
+...
+---
+apiVersion: v1
+kind: Service
+metadat: 
+  name: replica-svc
+  labels:
+    app: myapp
+spec:
+  type: NodePort
+  selector:
+    app: myapp
+  ports:
+  - port: 80
+    targetPort: 80
