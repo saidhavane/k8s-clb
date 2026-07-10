@@ -18,7 +18,7 @@ spec:
       - name: nginx-cont
         image: saidhavane/templatemo:static
         ports:
-          containerPort: 80
+        - containerPort: 80
 ...
 ---
 apiVersion: v1
