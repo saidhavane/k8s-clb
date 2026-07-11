@@ -1,0 +1,21 @@
+apiVersion: app/v1
+kind: DaemonSet
+metadat: 
+  name: deamon
+  labels:
+    app: myapp
+spec:
+  selector:
+    matchLabels:
+      app: myapp
+  template: 
+    metadata: 
+      name: dae-temp
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: aws-con
+        image: amazon/cloudwatch-agent:latest
+        ports:
+          containerPort: 80
