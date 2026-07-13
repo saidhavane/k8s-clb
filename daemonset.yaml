@@ -1,6 +1,6 @@
-apiVersion: app/v1
+apiVersion: apps/v1
 kind: DaemonSet
-metadat: 
+metadata: 
   name: deamon
   labels:
     app: myapp
@@ -18,4 +18,4 @@ spec:
       - name: aws-con
         image: amazon/cloudwatch-agent:latest
         ports:
-          containerPort: 80
+        - containerPort: 80
