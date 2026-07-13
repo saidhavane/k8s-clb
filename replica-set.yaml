@@ -16,7 +16,7 @@ spec:
         app: myapp
     spec:
       containers:
-      - name: con
+      - name: replica-con
         image:  mayurpandit25/studentapp-frontend:latest
         ports:
         - containerPort: 80
