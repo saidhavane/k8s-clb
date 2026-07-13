@@ -10,7 +10,7 @@ spec:
       app: myapp
   template: 
     metadata: 
-      name: dae-temp
+      name: dae-template 
       labels:
         app: myapp
     spec:
