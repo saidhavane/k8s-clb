@@ -17,31 +17,29 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: nginx
+        image: mysql:8.0
         ports:
         - containerPort: 3306
         env:
         - name: MYSQL_USER
           valueFrom: 
-            configMapKeyref:
+            configMapKeyRef:
               name: my-conf
               key: msql_user
-
         - name: MYSQL_PASSWORD
           valueFrom: 
-            configMapKeyref:
+            configMapKeyRef:
               name: my-conf
               key: mysql_password   
-
         - name: MYSQL_DATABASE
           valueFrom:
-            configMapKeyref:
-              name: my_conf
-              key: mysql_database       
+            configMapKeyRef:
+              name: my-conf
+              key: mysql_database
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
-            configMapKeyref:
-              name: my_conf
+            configMapKeyRef:
+              name: my-conf
               key: mysql_root_password
 ...
 ---
