@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: state
+  labels:
+    app: myapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      name: temp
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: mysql
+        image: nginx
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_USER
+          valueFrom: 
+            configMapKeyref:
+              name: my-conf
+              key: msql_user
+
+        - name: MYSQL_PASSWORD
+          valueFrom: 
+            configMapKeyref:
+              name: my-conf
+              key: mysql_password   
+
+        - name: MYSQL_DATABASE
+          valueFrom:
+            configMapKeyref:
+              name: my_conf
+              key: mysql_database       
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            configMapKeyref:
+              name: my_conf
+              key: mysql_root_password
+...
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: svc
+  labels:
+    app: myapp
+spec:
+  clusterIP: None
+  selector: 
+    app: myapp
+  ports:
+  - port: 3306
+    targetPort: 3306 
