@@ -13,7 +13,7 @@ spec:
   - name: pvc-pod
     image: nginx
     ports:
-      containerPort: 80
+    - containerPort: 80
     volumeMounts:
-      name: my-vol
+    - name: my-vol
       mountPath: /usr/share/nginx/html/

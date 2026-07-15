@@ -8,9 +8,9 @@ spec:
   capacity: 
     storage: 10Gi
   accessModes: 
-    ReadWriteOnce
-  StorageClassName: standard
-  volumeMode: filesystem
-  PersistentVolumeReclaimPolicy: Retain
+  - ReadWriteOnce
+  storageClassName: standard
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Retain
   hostPath: 
     path: /mnt/data
