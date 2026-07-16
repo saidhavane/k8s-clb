@@ -1,24 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata:
+metadata: 
   name: my-deploy
-  labels:
+  labels: 
     app: myapp
+    namespace: hpa
 spec:
-  replicas: 5
+  replicas: 1
   selector:
     matchLabels:
       app: myapp
-  strategy: 
-    type: Recreate
-  template:
+  template: 
     metadata:
       name: temp
       labels:
         app: myapp
     spec:
       containers:
-      - name: con
-        image: nginx:latest
+      - name: pod
+        image: nginx
         ports:
         - containerPort: 80
